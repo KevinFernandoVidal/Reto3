@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block contenido %}
+    <h1>Detalles del mantenimiento</h1>
+    <h3>Moto: {{object.moto.nombreCompleto}}</h3>
+    <h3>Responsable: {{object.responsable.nombreCompleto}}</h3>
+    <h3>Nombre: {{object.nombres}}</h3>
+    <h3>Descripcion: {{object.descripción}}</h3>
+    <h3>Fecha: {{object.fecha}}</h3>
+    {% if object.moto.estado != 'En propiedad' or object.moto.estado != 'Pendiente old' %}
+        <a href="{% url 'mantenimiento_editar' id_mantenimiento=object.id %}">EDITAR</a>
+        <a href="{% url 'mantenimiento_eliminar' id_mantenimiento=object.id %}">ELIMINAR</a>
+    {% endif %}
+{% endblock contenido %}

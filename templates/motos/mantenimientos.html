@@ -1,0 +1,29 @@
+{% extends 'base.html' %} 
+{% block contenido %}
+<h1>Todos los mantenimientos</h1>
+
+<table border="2">
+    <tr>
+        <th>Nombre</th>
+        <th>Fecha</th>
+        <th>Descripción</th>
+        <th>Moto</th>
+        <th>Responsable</th>
+        <th>Mas</th>
+    </tr>
+
+    {% for l in lista %}
+    <tr>
+        <td>{{ l.nombre }}</td>
+        <td>{{ l.fecha }}</td>
+        <td>{{ l.descripcion }}</td>
+        <td>{{ l.moto.nombreCompleto }}</td>
+        <td>{{ l.responsable.nombreCompleto}}</td>
+        <td><a href="{% url 'mantenimiento_detalles' id_mantenimiento=l.id %}">Ver Detalles</a></td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock contenido %}

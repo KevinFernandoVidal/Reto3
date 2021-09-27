@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% block contenido %}
+<h1>Todas las Motos</h1>
+
+<table border="1">
+    <tr>
+        <th>Imagen</th>
+        <th>Marca</th>
+        <th>modelo</th>
+        <th>cilindraje</th>
+        <th>color</th>
+        <th>placa</th>
+        <th>chasis</th>
+        <th>Propietario</th>
+        <th>Estado</th>
+    </tr>
+
+    {% for l in lista %}
+    <tr>
+        <td>{{ l.moto.fotos_motos }} <img src="/media/{{ object.fotos_motos }}" alt=""></td>
+        <td>{{ l.moto.marca }}</td>
+        <td>{{ l.moto.modelo }}</td>
+        <td>{{ l.moto.cilindraje }}</td>
+        <td>{{ l.moto.color }}</td>
+        <td>{{ l.moto.placa }}</td>
+        <td>{{ l.moto.chasis }}</td>
+        <td>{{ l.propietario }}</td>
+        <td>{{ l.estado }}</td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock contenido %}

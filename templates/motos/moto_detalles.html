@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block contenido %}
+<h2><span style="color: red;">Marca: </span>{{ object.moto.marca }}</h2>
+<h3><span style="color: red;">Modelo: </span>{{ object.moto.modelo}}</h3>
+<h3><span style="color: red; ">Cilindraje: </span>{{ object.moto.cilindraje}}</h3>
+<h3><span style="color: red; ">placa: </span>{{ object.moto.placa}}</h3>
+<h3><span style="color: red; ">Chasis: </span>{{ object.moto.chasis}}</h3>
+<h3><span style="color: red; ">Propietario: </span>{{ object.propietario}}</h3>
+<h3><span style="color: red; ">Estado de la moto: </span>{{ object.estado}}</h3>
+<h3>{{ object.moto.foto_moto}}</h3>
+<img src="/media/{{ object.moto.foto_moto}}" alt=" "> 
+
+{% if object.estado == 'Pendiente' or object.estado == 'En propiedad' %}
+    <a href="{% url 'mantenimientos' id_moto=object.moto.id %} "> Ver Mantenimintos</a> 
+{% endif %}
+
+{% if object.estado == 'En propiedad' %}
+    <a href="{% url 'mantenimiento_agregar' id_moto=object.moto.id %}">Agregar mantenimiento</a>
+    <a href="{% url 'traspasar_moto' id_moto=object.moto.id id_historial=object.id %} "> Traspasar Moto</a> 
+{% endif %}
+
+{% endblock contenido %}
